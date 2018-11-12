@@ -70,4 +70,16 @@ defmodule MyAppWeb.UserController do
     end
   end
 
+  def sign_out(conn, _params) do
+    conn
+    |> delete_session(:current_user_id)
+    |> put_status(:ok)
+    |> render(MyAppWeb.Views.Api.Global.GlobalView, "200.json", message: "successfully logout")
+  end
+
+  def login_w_credential(conn, %{"email" => email, "password" => password}) do
+    conn
+    |>
+  end
+
 end

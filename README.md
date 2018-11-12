@@ -23,6 +23,7 @@ mix phx.new my-app --app my_app --module MyApp --no-brunch --no-html
 edit file config/dev.exs change the postgres configuration
 mix ecto.create # for create database
 mix phx.server # for running the application
+
 mix phx.gen.context Auth User users email:string:unique \
 is_active:boolean # for generate User schema and Auth context
 
@@ -116,6 +117,10 @@ http://localhost:4000/api/users/sign_in
 #not error
 curl -H "Content-Type: application/json" -X GET \
 http://localhost:4000/api/users \
+-c cookies.txt -b cookies.txt -i
+
+curl -H "Content-Type: application/json" -X GET \
+http://localhost:4000/api/roles \
 -c cookies.txt -b cookies.txt -i
 
 #edit file MyAppWeb.ErrorView and see commented by me

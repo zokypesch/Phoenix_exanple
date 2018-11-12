@@ -22,11 +22,17 @@ defmodule MyAppWeb.Router do
     pipe_through(:api)
     post("/users/sign_in", UserController, :sign_in)
     options   "/users/sign_in", UserController, :options
+    get("/users/sign_out", UserController, :sign_out)
   end
 
   scope "/api", MyAppWeb do
     pipe_through([:api, :api_auth])
     resources("/users", UserController, except: [:new, :edit])
+    resources("/modules", ModulController)
+    resources("/role_permition", RolePermController)
+    resources("/roles", RuleController)
+    resources("/perms", PermController)
+    resources("/perms_code", PermCodeController)
   end
 
   # Plug function

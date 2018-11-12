@@ -1,0 +1,15 @@
+
+
+mix phx.gen.json Module Modul modules name:string display_name:text --no-context --no schema
+mix phx.gen.json Role Rule roles name:string display_name:text --no-context --no schema
+mix phx.gen.json Permition Perm permitions name:string module_id:integer perrmission_code:string --no-context --no schema
+mix phx.gen.json PermitionCode PermCode permition_codes perrmission_code:string description:text --no-context --no schema
+mix phx.gen.json RolePermission RolePerm role_permissions role_id:integer permission_id:integer user_id:integer --no-context --no schema
+
+mix phx.gen.context Module Modul modules name:string display_name:text
+mix phx.gen.context Role Rule roles name:string display_name:text
+mix phx.gen.context Permition Perm permitions name:string module_id:integer perrmission_code:string
+mix phx.gen.context PermitionCode PermCode permition_codes perrmission_code:string description:text
+mix phx.gen.context RolePermission RolePerm role_permissions role_id:integer permission_id:integer user_id:integer
+
+mix ecto.migrate

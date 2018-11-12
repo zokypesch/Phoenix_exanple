@@ -87,6 +87,14 @@ defmodule MyAppWeb.UserControllerTest do
       conn = post(conn, user_path(conn, :sign_in, %{email: "nonexistent email", password: ""}))
       assert json_response(conn, 401)["errors"] == %{"detail" => "Wrong email or password"}
     end
+
+    test "render user when user logout", %{conn: conn} do
+      conn = get(conn, user_path(conn, :sign_out))
+
+      assert json_response(conn, 200) == %{
+        "status"=> "ok", "message"=> "successfully logout"
+      }
+    end
   end
 
   describe "update user" do
